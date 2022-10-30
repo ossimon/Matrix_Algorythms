@@ -1,0 +1,1 @@
+# Implementation of classic matrix multiplication algorythm (also knows as Binét's method)
