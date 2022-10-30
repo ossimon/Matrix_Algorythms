@@ -1,4 +1,4 @@
-# Main file, where we're running our implementations of algorythms
+# Main file, where we're running our implementations of algorithms
 
 import numpy as np
 

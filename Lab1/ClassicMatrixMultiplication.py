@@ -11,9 +11,6 @@ def classic_multiply(matrix1, matrix2):
     #          g h
     # result: r1 r2  |  ae+bg af+bh
     #         r3 r4  |  ce+dg cf+dh
-    # print('matrix1:', matrix1, sep = '\n')
-    # print('matrix2:', matrix2, sep = '\n')
-    # print()
 
     size = matrix1.shape[0]
     half = size // 2
