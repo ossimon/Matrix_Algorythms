@@ -9,3 +9,4 @@ import AIGeneratedMatrixMultiplication as aimm
 m1 = np.array([[1, 2], [3, 4]])
 m2 = np.ones(shape=(2, 2))
 print(cmm.classic_multiply(m2, m1))
+print(smm.strassens_multiply(m2, m1))
