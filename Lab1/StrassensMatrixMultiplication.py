@@ -1,1 +1,3 @@
-# Implementation of Strassen's matrix multiplication algorythm
+# Implementation of Strassen's matrix multiplication algorithm
+
+import numpy as np
