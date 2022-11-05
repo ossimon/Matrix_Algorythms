@@ -6,7 +6,11 @@ import ClassicMatrixMultiplication as cmm
 import StrassensMatrixMultiplication as smm
 import AIGeneratedMatrixMultiplication as aimm
 
-m1 = np.array([[1, 2], [3, 4]])
-m2 = np.ones(shape=(2, 2))
-print(cmm.classic_multiply(m2, m1))
-print(smm.strassens_multiply(m2, m1))
+# m1 = np.array([[1, 2], [3, 4]])
+# m2 = np.ones(shape=(2, 2))
+m3 = np.ones(shape=(256, 256))
+# print(cmm.classic_multiply(m2, m1))
+# print(smm.strassens_multiply(m2, m1))
+
+print(cmm.classic_multiply(m3, m3)[1])
+print(smm.strassens_multiply(m3, m3)[1])

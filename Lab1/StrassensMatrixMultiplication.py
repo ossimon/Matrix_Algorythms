@@ -16,7 +16,7 @@ def strassens_multiply(matrix1, matrix2):
     half = size // 2
 
     if size == 1:
-        return matrix1 * matrix2
+        return matrix1 * matrix2, 1
 
     a11 = matrix1[0:half, 0:half]
     a12 = matrix1[0:half, half:size]
@@ -28,13 +28,13 @@ def strassens_multiply(matrix1, matrix2):
     b21 = matrix2[half:size, 0:half]
     b22 = matrix2[half:size, half:size]
 
-    p1 = strassens_multiply(a11 + a22, b11 + b22)
-    p2 = strassens_multiply(a21 + a22, b11)
-    p3 = strassens_multiply(a11, b12 - b22)
-    p4 = strassens_multiply(a22, b21 - b11)
-    p5 = strassens_multiply(a11 + a12, b22)
-    p6 = strassens_multiply(a21 - a11, b11 + b12)
-    p7 = strassens_multiply(a12 - a22, b21 + b22)
+    p1, multiplication_cost = strassens_multiply(a11 + a22, b11 + b22)
+    p2 = strassens_multiply(a21 + a22, b11)[0]
+    p3 = strassens_multiply(a11, b12 - b22)[0]
+    p4 = strassens_multiply(a22, b21 - b11)[0]
+    p5 = strassens_multiply(a11 + a12, b22)[0]
+    p6 = strassens_multiply(a21 - a11, b11 + b12)[0]
+    p7 = strassens_multiply(a12 - a22, b21 + b22)[0]
 
     r1 = p1 + p4 - p5 + p7
     r2 = p3 + p5
@@ -44,4 +44,8 @@ def strassens_multiply(matrix1, matrix2):
     r12 = np.concatenate((r1, r2), axis=1)
     r34 = np.concatenate((r3, r4), axis=1)
 
-    return np.concatenate((r12, r34), axis=0)
+    # Total number of operations is equal to the cost of seven block multiplications
+    # and eighteen block additions
+    number_of_operations = 7 * multiplication_cost + 18 * (a11.shape[0] ** 2)
+
+    return np.concatenate((r12, r34), axis=0), number_of_operations
