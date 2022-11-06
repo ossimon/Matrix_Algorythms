@@ -15,6 +15,9 @@ def strassens_multiply(matrix1, matrix2):
     size = matrix1.shape[0]
     half = size // 2
 
+    if size == 1:
+        return matrix1 * matrix2, 1
+
     a11 = matrix1[0:half, 0:half]
     a12 = matrix1[0:half, half:size]
     a21 = matrix1[half:size, 0:half]
