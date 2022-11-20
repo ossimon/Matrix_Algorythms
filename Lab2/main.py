@@ -4,8 +4,7 @@ import lufact as lu
 import invert as inv
 import determinant as det
 
-import GenerateMatrix as gm
+from GenerateMatrix import generate_matrix
 
-print(gm.generate_matrix(3))
-
+print(generate_matrix(3))
 
