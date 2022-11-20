@@ -1,11 +1,14 @@
 # Main function
+import numpy as np
 
 import lufact as lu
 import invert as inv
 import determinant as det
 
-import GenerateMatrix as gm
+from GenerateMatrix import generate_matrix
+from invert import invert
 
-print(gm.generate_matrix(3))
-
-
+matrix = generate_matrix(4)
+print(matrix)
+print(invert(matrix))
+print(np.linalg.inv(matrix))

@@ -20,12 +20,13 @@ mB = np.array([[0.07809653, 0.79444128, 0.23680782, 0.97269623],
  [0.06724143, 0.82957049, 0.78835744, 0.83225435]])
 
 print('Classic solution\n', cmm.classic_multiply(mA, mB)[0], '\n')
-print('Strassen solution\n', smm.strassens_multiply(mA, mB)[0])
+print('Strassen solution\n', smm.strassens_multiply(mA, mB)[0], '\n')
 
 # Calculating time and number of operations for matrix 2^k x 2^k
 
 times_classic = []
 times_strassen = []
+times_numpy = []
 
 operations_classic = []
 operations_strassen = []
