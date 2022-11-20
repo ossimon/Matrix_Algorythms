@@ -1,7 +1,11 @@
-import time
+# Main function
+
+import lufact as lu
+import invert as inv
+import determinant as det
+
+import GenerateMatrix as gm
+
+print(gm.generate_matrix(3))
 
 
-print("A: [4]")
-print("Calculating LU...")
-time.sleep(1)
-print("L: [4] ; U: [1]")
