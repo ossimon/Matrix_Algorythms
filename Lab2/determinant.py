@@ -5,7 +5,7 @@ import numpy as np
 
 
 def determinant(matrix):
-    l, u = lufact(matrix)
+    l, u, cost = lufact(matrix)
     size = l.shape[0]
-    indexes = [(i, i) for i in range(size)]
-    return np.multiply(l[indexes])
+    indexes = np.eye(size, dtype='bool')
+    return np.prod(l, where=indexes), cost + size

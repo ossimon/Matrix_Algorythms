@@ -10,19 +10,19 @@ def lufact(matrix):
     half = size // 2
 
     if size == 1:
-        return matrix, 1, 0
+        return matrix, np.ones((1, 1)), 0
 
     a11 = matrix[0:half, 0:half]
     a12 = matrix[0:half, half:size]
     a21 = matrix[half:size, 0:half]
     a22 = matrix[half:size, half:size]
 
-    cost = [0 for _ in range(10)]
+    cost = [0 for _ in range(11)]
     l11, u11, cost[1] = lufact(a11)
     iu11, cost[2] = invert(u11)
-    l21, cost[3] = mul(a21, iu11)[0]
+    l21, cost[3] = mul(a21, iu11)
     il11, cost[4] = invert(l11)
-    u12, cost[5] = mul(il11, a12)[0]
+    u12, cost[5] = mul(il11, a12)
     a21iu11, cost[6] = mul(a21, iu11)
     a21iu11il11, cost[7] = mul(a21iu11, il11)
     a21iu11il11a12, cost[8] = mul(a21iu11il11, a12)
