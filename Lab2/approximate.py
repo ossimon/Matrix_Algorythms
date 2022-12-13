@@ -10,10 +10,9 @@ def norm(x, y, exp):
     return np.sum(np.square(y - new_y))
 
 
-def approximate(results, smallest_power_of_2, largest_power_of_2):
+def approximate(sizes, results, min_exp=1, max_exp=5):
 
-    x = np.array(range(smallest_power_of_2, largest_power_of_2 + 1))
-    x = 2 ** x
+    x = np.array(sizes)
     y = np.array(results)
 
     best_norm = np.inf
@@ -22,7 +21,7 @@ def approximate(results, smallest_power_of_2, largest_power_of_2):
     precision = 10 ** 5
 
     for i in range(precision):
-        exp = 1 + i / precision * 4
+        exp = min_exp + i / precision * (max_exp - 1)
         new_norm = norm(x, y, exp)
         if new_norm < best_norm:
             best_norm = new_norm
