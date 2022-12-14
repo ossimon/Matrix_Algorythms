@@ -15,10 +15,14 @@ class HierarchyTreeNode:
         self.nodes.append(node)
 
     def recreate(self):
-        if self.rank == 0:
-            return np.zeros(self.shape)
+        # print(self.shape, self.rank)
         if self.rank is not None:
+            if self.rank == 0:
+                return np.zeros(self.shape)
             return self.u @ self.v
+
+        # for i in range(4):
+        #     print(self.nodes[i].recreate())
 
         upper = np.concatenate((self.nodes[0].recreate(), self.nodes[1].recreate()), axis=1)
         lower = np.concatenate((self.nodes[2].recreate(), self.nodes[3].recreate()), axis=1)

@@ -3,7 +3,7 @@ import numpy as np
 
 
 def is_zeros(matrix):
-    return np.sum(matrix == 0) > 0
+    return not np.any(matrix)
 
 
 def compress_matrix(matrix, u, v, s, tmin, tmax, smin, smax, r):
