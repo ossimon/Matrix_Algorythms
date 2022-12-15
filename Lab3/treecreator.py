@@ -15,14 +15,10 @@ class HierarchyTreeNode:
         self.nodes.append(node)
 
     def recreate(self):
-        # print(self.shape, self.rank)
         if self.rank is not None:
             if self.rank == 0:
                 return np.zeros(self.shape)
             return self.u @ self.v
-
-        # for i in range(4):
-        #     print(self.nodes[i].recreate())
 
         upper = np.concatenate((self.nodes[0].recreate(), self.nodes[1].recreate()), axis=1)
         lower = np.concatenate((self.nodes[2].recreate(), self.nodes[3].recreate()), axis=1)
@@ -43,7 +39,6 @@ def create_tree(matrix, t_min, t_max, s_min, s_max, r, epsilon):
 
     shape = (t_max - t_min, s_max - s_min)
     block = matrix[t_min:t_max, s_min:s_max]
-    # print(shape)
 
     if shape[0] <= r:
         return HierarchyTreeNode(block, np.eye(np.max(shape)), rank=shape[0], shape=shape)
@@ -52,10 +47,7 @@ def create_tree(matrix, t_min, t_max, s_min, s_max, r, epsilon):
     u = svd.fit_transform(block)
     v = svd.components_
     s = svd.singular_values_
-    # print(s)
-    # print(block)
-    # print(np.dot(u, v))
-    # print()
+
     if s.shape[0] <= r:
         return HierarchyTreeNode(block, np.eye(np.max(shape)), rank=s.shape[0], shape=shape)
 
